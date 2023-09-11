@@ -1,0 +1,45 @@
+
+<input
+  type="search"
+  class="search-bar"
+  placeholder="Pesquisar"
+  [(ngModel)] = "this.filtro.prefix"
+  (keyup)="this.pesquisarLugar()">
+
+  <select [(ngModel)] = "this.filtro.gasto" (change)="this.pesquisarLugar()">
+    <option selected = true value="">Nível de gasto</option>
+    <option value="Baratíssimo">Baratíssimo</option>
+    <option value="Barato">Barato</option>
+    <option value="Padrão">Padrão</option>
+    <option value="Pouco caro">Pouco caro</option>
+    <option value="Caro">Caro</option>
+    <option value="Meeeu amigo">Meeeu amigo</option>
+  </select>
+
+  <select [(ngModel)] = "this.filtro.clima" (change)="this.pesquisarLugar()">
+    <option selected = true value="">Clima do ambiente</option>
+    <option value="Suave">Suave</option>
+    <option value="Romântico">Romântico</option>
+    <option value="Quente">Quente</option>
+    <option value="Fervendo">Fervendo</option>
+  </select>
+
+<h1>{{this.barOuCafe()}}</h1>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div *ngFor="let lugar of lugares">
+    <app-card [lugar]="lugar"></app-card>
+  </div>
+</div>
+<p *ngIf="this.lugares.length == 0" class="sem-lugares">
+  Não há mais lugares cadastrados
+</p>
+<div class="container">
+  <div class="center">
+    <button *ngIf="this.pagina > 0" (click)="this.voltaPagina()" class="btn">
+      Voltar
+    </button>
+    <button (click)="this.proximaPagina()" class="btn">Próxima</button>
+  </div>
+</div>
+

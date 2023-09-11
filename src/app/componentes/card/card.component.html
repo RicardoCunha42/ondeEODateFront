@@ -1,0 +1,16 @@
+<div class="col">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{this.lugar.nome}}</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">Nível de gasto: {{this.lugar.gasto}}</h6>
+      <h6 class="card-subtitle mb-2 text-body-secondary">Clima do ambiente: {{this.lugar.clima}}</h6>
+      <a href="{{this.lugar.insta}}" class="card-link">Instagram</a>
+      <p class="card-text">{{this.lugar.obs}}</p>
+    </div>
+    <div class="card-footer">
+      <button routerLink="/{{this.barOuCafe()}}/{{this.lugar.id}}" class="btn">Atualizar</button>
+      <button (click)='deletaLugar()' class="btn">Deletar</button>
+    </div>
+  </div>
+</div>
+

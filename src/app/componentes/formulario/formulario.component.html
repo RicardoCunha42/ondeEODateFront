@@ -1,0 +1,98 @@
+<div class="row align-items-center" style="height: 85vh;">
+  <div class="mx-auto col-10 col-md-8 col-lg-6">
+    <h1>Cadastro de {{this.barOuCafe()}}</h1>
+    <form [formGroup]="formulario">
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome do bar</label>
+        <input
+          type="text"
+          name="nome"
+          class="form-control"
+          formControlName="nome"
+          value={{this.lugar.nome}}
+        >
+        <div class="input-invalido"
+          *ngIf="this.formulario.get('nome')?.errors &&
+          this.formulario.get('nome')?.touched">
+          Precisa de pelo menos 3 caracteres
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="insta" class="form-label">Instagram do bar</label>
+        <input
+          type="text"
+          name="insta"
+          class="form-control"
+          formControlName="insta"
+          value={{this.lugar.insta}}
+        >
+        <div class="input-invalido"
+          *ngIf="this.formulario.get('insta')?.errors?.['pattern'] &&
+          this.formulario.get('insta')?.touched">
+          Precisa ser o link do perfil no instagram
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="gasto" class="form-label">Nível de gasto</label>
+        <select name="gasto" class="form-select" formControlName="gasto">
+          <option selected = true>{{this.lugar.gasto}}</option>
+          <option value="Baratíssimo">Baratíssimo</option>
+          <option value="Barato">Barato</option>
+          <option value="Padrão">Padrão</option>
+          <option value="Pouco caro">Pouco caro</option>
+          <option value="Caro">Caro</option>
+          <option value="Meeeu amigo">Meeeu amigo</option>
+        </select>
+
+        <div class="input-invalido"
+          *ngIf="this.formulario.get('gasto')?.errors?.['required'] &&
+          this.formulario.get('gasto')?.touched">
+          Precisa ter o nível de gasto
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="clima" class="form-label">Clima do ambiente</label>
+        <select name="clima" class="form-select" formControlName="clima">
+          <option selected = true>{{this.lugar.clima}}</option>
+          <option value="Suave">Suave</option>
+          <option value="Romântico">Romântico</option>
+          <option value="Quente">Quente</option>
+          <option value="Fervendo">Fervendo</option>
+        </select>
+
+        <div class="input-invalido"
+          *ngIf="this.formulario.get('clima')?.errors?.['required'] &&
+          this.formulario.get('clima')?.touched">
+          Precisa ter o clima do ambiente.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="obs" class="form-label">Observações</label>
+        <textarea
+          name="obs"
+          class="form-control"
+          formControlName="obs"
+          value={{this.lugar.obs}}>
+        </textarea>
+        <div class="input-invalido" *ngIf="this.formulario.get('obs')?.errors?.['maxlength']">
+          Máximo de 120 caracteres.
+        </div>
+      </div>
+
+      <div class="btn-group">
+        <div *ngIf="this.lugar.id == -1; else idPresente">
+          <button (click)="enviadados()" class="btn btn-light" type="submit">Enviar</button>
+        </div>
+        <ng-template #idPresente>
+          <button (click)="atualizaDados()" class="btn btn-light" type="submit">Atualizar</button>
+        </ng-template>
+        <button routerLink="/{{this.barOuCafe() === 'Bares' ? '' : 'cafes'}}" class="btn btn-light">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+

@@ -1,0 +1,44 @@
+
+<header  class="cabecalho">
+    <img class="banner" src="../../../assets/imagens/banner.png" alt="banner">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <div ngbDropdown class="dropdown">
+          <button ngbDropdownToggle class="btn">
+            {{this.eBarOuCafe()}}
+          </button>
+          <ul ngbDropdownMenu>
+            <li>
+              <a ngbDropdownItem
+                class="dropdown-link"
+                *ngIf="this.eBarOuCafe() == 'Bares'; else liBares"
+                routerLink='/cafes'
+                (click) = 'this.alteraTipo()'>
+                Cafés
+              </a>
+              <ng-template #liBares>
+                <a ngbDropdownItem
+                  class="dropdown-link"
+                  routerLink='/'
+                  (click) = 'this.alteraTipo()'>
+                    Bares
+                </a>
+              </ng-template>
+            </li>
+          </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a *ngIf="this.eBarOuCafe() == 'Bares'; else criarCafe"
+              class="nav-link"
+              routerLink='/bares-formulario'>
+              Criar novo bar
+            </a>
+            <ng-template #criarCafe>
+              <a class="nav-link" routerLink='/cafes-formulario'>Criar novo café</a>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </nav>
+</header>
