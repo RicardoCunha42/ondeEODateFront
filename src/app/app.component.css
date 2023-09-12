@@ -12,3 +12,9 @@ main {
   margin-top: 0;
   padding-bottom: 100px;
 }
+
+@media screen and (max-width: 480px) {
+  body {
+    min-width: 130vh;
+  }
+}

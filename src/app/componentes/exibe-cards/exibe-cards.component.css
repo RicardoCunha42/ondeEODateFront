@@ -72,6 +72,7 @@ button:hover{
 
 @media screen and (max-width: 480px) {
   .search-bar, select, button {
+    display: flex;
     width: auto;
     margin-top: 5px;
   }
