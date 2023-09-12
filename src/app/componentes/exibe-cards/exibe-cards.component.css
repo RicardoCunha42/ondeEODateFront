@@ -75,6 +75,10 @@ button:hover{
     display: flex;
     width: auto;
     margin-top: 5px;
+    font-size: x-large;
+  }
+  button {
+    font-size: x-large;
   }
 
   .search-bar {

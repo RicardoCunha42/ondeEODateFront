@@ -62,4 +62,8 @@ ul {
   .banner {
     background-size: contain;
   }
+
+  button {
+    font-size: x-large;
+  }
 }
