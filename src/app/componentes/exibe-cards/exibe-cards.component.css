@@ -69,3 +69,15 @@ button:hover{
   transition: 400ms;
   box-shadow: 5px 5px 5px aliceblue
 }
+
+@media screen and (max-width: 480px) {
+  .search-bar, select, button {
+    width: auto;
+    margin-top: 5px;
+  }
+
+  .search-bar {
+    margin-left: 10px;
+  }
+
+}
